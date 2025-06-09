@@ -16,46 +16,30 @@ body {
     min-height: 100vh;
     font-family: 'GmarketSansMedium';
     word-break: keep-all;
-}
-
-.buttons {
     text-align: center;
 }
 
-button {
-    font-family: 'GmarketSansMedium';
-    width: 200px;
-    height: 50px;
-    margin: 10px;
-    display: inline-block;
-    border-radius: 15px;
-    border: solid;
-    border-width: 2px;
-    font-size: 15px;
-}
-
-h1, h2, h4 {
+h1 {
     text-align: center;
-    z-index: 0;
     color: #fff;
     position: relative;
+    font-size: 2rem;
+    line-height: 1.4;
 }
 
-h1::before, h2::before, h4::before {
-    z-index: -1;
+h1::before {
     content: attr(data-content);
     position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: transparent;
     -webkit-text-stroke: 3px #000;
-}
-
-@media (max-width: 767px) {
-    h2::before {
-        left: 0;
-    }
-}
-
-h4::before {
-    -webkit-text-stroke: 2px #000;
+    white-space: pre-wrap;
+    width: 100%;
+    text-align: center;
+    z-index: -1;
+    pointer-events: none;
 }
 
 img {
