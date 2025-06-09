@@ -28,16 +28,23 @@ button {
     font-size: 15px;
 }
 
-h2 {
+h1, h2, h4 {
     z-index: 0;
     color: #fff;
     position: relative;
 }
 
-h2::before {
+h1::before, h2::before, h4::before {
     z-index: -1;
     content: attr(data-content);
     position: absolute;
-    left: 0;
     -webkit-text-stroke: 3px #000;
+}
+
+h2::before {
+    left: 0;
+}
+
+h4::before {
+    -webkit-text-stroke: 2px #000;
 }
