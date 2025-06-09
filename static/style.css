@@ -10,6 +10,7 @@ body {
     font-family: 'GmarketSansMedium';
     font-weight: lighter;
     background-image: url(bg.webp);
+    /*background-image: linear-gradient(to bottom, #f00, #0f0, #00f, #f0f);*/
     background-size: cover;
     background-position: center center;
     word-break: keep-all;
@@ -25,4 +26,18 @@ button {
     border: solid;
     border-width: 2px;
     font-size: 15px;
+}
+
+h2 {
+    z-index: 0;
+    color: #fff;
+    position: relative;
+}
+
+h2::before {
+    z-index: -1;
+    content: attr(data-content);
+    position: absolute;
+    left: 0;
+    -webkit-text-stroke: 3px #000;
 }
