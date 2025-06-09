@@ -48,8 +48,10 @@ h1::before, h2::before, h4::before {
     -webkit-text-stroke: 3px #000;
 }
 
-h2::before {
-    left: 0;
+@media (max-width: 767px) {
+    h2::before {
+        left: 0;
+    }
 }
 
 h4::before {
