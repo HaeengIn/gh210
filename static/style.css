@@ -6,14 +6,16 @@
 }
 
 body {
-    text-align: center;
     font-family: 'GmarketSansMedium';
-    font-weight: lighter;
     background-image: url(bg.webp);
     /*background-image: linear-gradient(to bottom, #f00, #0f0, #00f, #f0f);*/
     background-size: cover;
     background-position: center center;
     word-break: keep-all;
+}
+
+.buttons {
+    text-align: center;
 }
 
 button {
@@ -29,6 +31,7 @@ button {
 }
 
 h1, h2, h4 {
+    text-align: center;
     z-index: 0;
     color: #fff;
     position: relative;
@@ -47,4 +50,24 @@ h2::before {
 
 h4::before {
     -webkit-text-stroke: 2px #000;
+}
+
+img {
+    padding-top: 10px;
+}
+
+@media (max-width: 767px) {
+    img {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    img {
+        width: 70%;
+    }
+}
+
+li, details {
+    margin: 10px;
 }
