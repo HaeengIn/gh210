@@ -19,7 +19,7 @@ body {
     text-align: center;
 }
 
-h1 {
+h1, h4 {
     text-align: center;
     color: #fff;
     position: relative;
@@ -27,7 +27,7 @@ h1 {
     line-height: 1.4;
 }
 
-h1::before {
+h1::before, h4::before {
     content: attr(data-content);
     position: absolute;
     top: 0;
@@ -60,10 +60,6 @@ img {
 
 details {
     margin: 10px;
-}
-
-.buttons {
-    text-align: center;
 }
 
 button {
