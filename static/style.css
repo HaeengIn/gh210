@@ -5,12 +5,16 @@
     font-style: normal;
 }
 
-body {
-    font-family: 'GmarketSansMedium';
+html {
     background-image: url(bg.webp);
-    /*background-image: linear-gradient(to bottom, #f00, #0f0, #00f, #f0f);*/
     background-size: cover;
     background-position: center center;
+    background-repeat: no-repeat;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'GmarketSansMedium';
     word-break: keep-all;
 }
 
