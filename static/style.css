@@ -61,6 +61,15 @@ details {
     margin: 10px;
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 15px;
+    max-width: 660px;
+    margin: 0 auto;
+}
+
 button {
     font-family: 'GmarketSansMedium';
     width: 200px;
