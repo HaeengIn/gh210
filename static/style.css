@@ -51,6 +51,12 @@ img {
     }
     .grid {
         grid-template-columns: 1fr;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    button {
+        width: 100%;
+        max-width: 400px;
     }
 }
 
