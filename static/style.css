@@ -49,11 +49,26 @@ img {
     img {
         width: 100%;
     }
+    .grid {
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+        max-width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    button {
+        width: 100%;
+        max-width: 400px;
+    }
 }
 
 @media (min-width: 768px) {
     img {
         width: 40%;
+    }
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 660px;
     }
 }
 
@@ -63,10 +78,8 @@ details {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     gap: 15px;
-    max-width: 660px;
     margin: 0 auto;
 }
 
