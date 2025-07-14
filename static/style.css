@@ -49,6 +49,9 @@ img {
     img {
         width: 100%;
     }
+    .grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (min-width: 768px) {
