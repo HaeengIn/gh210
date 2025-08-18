@@ -115,3 +115,7 @@ li {
 hr {
     min-width: 100%;
 }
+
+p {
+    font-size: 70%;
+}
