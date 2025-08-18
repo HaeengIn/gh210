@@ -3,6 +3,7 @@
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 html {
@@ -113,4 +114,8 @@ li {
 
 hr {
     min-width: 100%;
+}
+
+p {
+    font-size: 70%;
 }
