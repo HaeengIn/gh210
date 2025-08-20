@@ -122,3 +122,7 @@ hr {
 p {
     font-size: 70%;
 }
+
+a, label {
+    display: inline-block;
+}
