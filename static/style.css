@@ -126,3 +126,7 @@ p {
 a, label {
     display: inline-block;
 }
+
+.dday {
+    font-size: 120%;
+}
