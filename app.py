@@ -18,18 +18,22 @@ supabase: Client = create_client(supabaseUrl, supabaseKey)
 
 @app.get("/")
 def index(request: Request):
+    # 당일 날짜 불러오기
     today = date.today()
 
+    # 수행평가 데이터 불러오기
     performance = supabase.table("performance").select("subject", "date").execute()
     performanceList = performance.data or []
 
+    # D-Day 그룹화
     ddayGroups: dict[int, list[str]] = {}
     for item in performanceList:
         dateStr = item.get("date")
         subject = item.get("subject")
         if not date:
             continue
-
+        
+        # 날짜 형식 변환
         try:
             performanceDate = date.fromisoformat(dateStr)
         except Exception:
@@ -38,10 +42,12 @@ def index(request: Request):
             except Exception:
                 continue
 
+        # D-Day 계산
         dday = (performanceDate - today).days
         if 0 <= dday <= 7:
             ddayGroups.setdefault(dday, []).append(subject)
 
+    # D-Day 메시지 생성
     ddayMessages: list[str] = []
     for d in sorted(ddayGroups.keys()):
         subjects = [s for s in ddayGroups[d] if s]
