@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="2학년 10반 수행평가 안내지 클라우드">
-    <meta property="og:image" content="/static/bg.webp">
+    <meta property="og:image" content="{{ url_for('static', path='/bg.webp') }}">
     <meta property="og:url" content="https://gh210.kro.kr/">
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="icon" href="/static/favicon.png">
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', path='/favicon.png') }}">
     <title>2-10 수행평가 안내지 클라우드</title>
 </head>
 <body>
@@ -15,6 +15,11 @@
         2025 교하고등학교 2학년 10반 수행평가 안내지 클라우드
     </h1>
     <a class="fade-up" href="notice">📢 공지사항</a>
+    <div class="fade-up dday">
+        {% for message in ddayMessages %}
+            <p class="fade-up">{{ message|safe }}</p>
+        {% endfor %}
+    </div>
     <div class="grid">
         <button class="fade-up" onclick="location.href='/cloud/math'">수학</button>
         <button class="fade-up" onclick="location.href='/cloud/eng'">영어</button>
