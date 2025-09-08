@@ -18,7 +18,7 @@ supabase: Client = create_client(supabaseUrl, supabaseKey)
 
 @app.get("/")
 def index(request: Request):
-    ddayMessages = dday()
+    ddayMessages = dday(supabase)
     meal = getMeal()
     
     return templates.TemplateResponse("index.html", {"request": request, "ddayMessages": ddayMessages, "meal": meal})
