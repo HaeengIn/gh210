@@ -1,9 +1,7 @@
 from datetime import date, datetime
 from supabase import Client
 
-supabase: Client
-
-def dday():
+def dday(supabase: Client):
     # 당일 날짜 불러오기
     today = date.today()
 
@@ -16,7 +14,7 @@ def dday():
     for item in performanceList:
         dateStr = item.get("date")
         subject = item.get("subject")
-        if not date:
+        if not dateStr:
             continue
         
         # 날짜 형식 변환
@@ -47,6 +45,8 @@ def dday():
         else:
             message = f"{subjectStr} 수행평가가 실시되기까지 <b>{d}일</b> 남았습니다!"
         ddayMessages.append(message)
+
+    return ddayMessages
 
 def getMeal():
     import requests
