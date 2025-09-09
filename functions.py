@@ -55,19 +55,15 @@ def getMeal():
 
     load_dotenv()
 
-    neisApi = os.getenv("neisApi")
-    eduCode = "7530000"
-    schoolCode = "17563"
-
     mealToday = datetime.now().strftime("%Y%m%d")
     baseUrl = "https://open.neis.go.kr/hub/mealServiceDietInfo"
     params = {
-        "KEY": neisApi,
+        "KEY": os.getenv("neisApi"),
         "Type": "json",
         "pIndex": 1,
         "pSize": 100,
-        "ATPT_OFCDC_SC_CODE": eduCode,
-        "SD_SCHUL_CODE": schoolCode,
+        "ATPT_OFCDC_SC_CODE": "J10",
+        "SD_SCHUL_CODE": "7530774",
         "MLSV_YMD": mealToday,
     }
 
