@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from supabase import create_client, Client
 import os
 from dotenv import load_dotenv
-from functions import dday, getMeal
+from functions import *
 
 load_dotenv()
 
@@ -20,8 +20,10 @@ supabase: Client = create_client(supabaseUrl, supabaseKey)
 def index(request: Request):
     ddayMessages = dday(supabase)
     meal = getMeal()
-    
-    return templates.TemplateResponse("index.html", {"request": request, "ddayMessages": ddayMessages, "meal": meal})
+    timeTable = getTimeTable()
+    schedule = getSchedule()
+
+    return templates.TemplateResponse("index.html", {"request": request, "ddayMessages": ddayMessages, "meal": meal, "timeTable": timeTable, "schedule": schedule})
 
 @app.get("/notice")
 def notice(request: Request):

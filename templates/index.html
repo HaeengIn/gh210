@@ -20,10 +20,25 @@
             <p class="fade-up">{{ message|safe }}</p>
         {% endfor %}
     </div>
-    <h4 class="fade-up" data-content="오늘의 급식">
+    <details>
+        <summary>학교 관련 일정 보기 [ 펼치기 · 접기 ]</summary>
+        <h4 class="fade-up" data-content="오늘의 급식">
         오늘의 급식
+        </h4>
+        <pre class="fade-up">{{ meal }}</pre>
+        <h4 class="fade-up" data-content="시간표">
+            시간표
+        </h4>
+        <pre class="fade-up">{{ timeTable|safe }}</pre>
+        <h4 class="fade-up" data-content="오늘의 일정">
+            오늘의 일정
+        </h4>
+        <pre class="fade-up">{{ schedule|safe }}</pre>
+    </details>
+    <hr class="fade-up">
+    <h4 class="fade-up" data-content="이수 중인 과목">
+        이수 중인 과목
     </h4>
-    <pre class="fade-up">{{ meal }}</pre>
     <div class="grid">
         <button class="fade-up" onclick="location.href='/math'">수학</button>
         <button class="fade-up" onclick="location.href='/eng'">영어</button>
