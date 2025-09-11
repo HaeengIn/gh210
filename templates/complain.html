@@ -17,9 +17,9 @@
     <ul>
         {% for post in posts %}
         <li>
-            <a class="fade-up" href="/post/{{ post.id }}">{{ post.title|safe }} {{ post.created_at|safe }}</a>
+            <a class="fade-up" href="/complain/{{ post.id }}">{{ post.title }} {{ post.created_at }}</a>
             <br>
-            {{ post.status|safe }}
+            {{ post.status }}
         </li>
         {% endfor %}
     </ul>
