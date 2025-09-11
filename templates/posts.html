@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="{{ post.title }}">
+    <meta property="og:image" content="../static/bg.webp">
+    <meta property="og:url" content="https://gh210.kro.kr/complain/{{ post.id }}">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" href="../static/favicon.png">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+    <button onclick="location.href='/complain.html'">돌아가기</button>
+</body>
+</html>

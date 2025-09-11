@@ -35,3 +35,17 @@ def cloud_subject(request: Request, subject: str):
     if subject not in valid_subjects:
         return templates.TemplateResponse("404.html", {"request": request}, status_code=404)
     return templates.TemplateResponse(f"cloud/{subject}.html", {"request": request})
+
+@app.get("/complain")
+def complain(request: Request):
+    response = supabase.table("complain").select("*").execute()
+    posts = response.data
+
+    return templates.TemplateResponse("complain.html", {"request": request, "posts": posts})
+
+@app.get("/complain/{post_id}")
+def complainPost(request: Request, post_id: int):
+    response = supabase.table("complain").select("*").eq("id", post_id).single().execute()
+    post = response.data
+
+    return templates.TemplateResponse("posts.html", {"request": request, "post": post})

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="2학년 10반 민원 창구">
+    <meta property="og:image" content="../static/bg.webp">
+    <meta property="og:url" content="https://gh210.kro.kr/complain">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" href="../static/favicon.png">
+    <title>2학년 10반 민원 창구</title>
+</head>
+<body>
+    <h1 class="fade-up" data-content="2학년 10반 민원 창구">
+        2학년 10반 민원 창구
+    </h1>
+    <ul>
+        {% for post in posts %}
+        <li>
+            <a class="fade-up" href="/post/{{ post.id }}">{{ post.title|safe }} {{ post.created_at|safe }}</a>
+            <br>
+            {{ post.status|safe }}
+        </li>
+        {% endfor %}
+    </ul>
+    <button class="fade-up" onclick="location.href='/write'">글 작성</button>
+    <button class="fade-up" onclick="location.href='/index'">홈으로</button>
+</body>
+</html>
