@@ -10,7 +10,6 @@ load_dotenv()
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
-app.mount("/static", StaticFiles(directory="static"), name="static")
 
 supabaseUrl = os.getenv("SUPABASE_URL")
 supabaseKey = os.getenv("SUPABASE_KEY")
