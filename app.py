@@ -38,14 +38,14 @@ def cloud_subject(request: Request, subject: str):
 
 @app.get("/complain")
 def complain(request: Request):
-    response = supabase.table("complain").select("*").execute()
+    response = supabase.table("posts").select("*").execute()
     posts = response.data
 
     return templates.TemplateResponse("complain.html", {"request": request, "posts": posts})
 
 @app.get("/complain/{post_id}")
 def complainPost(request: Request, post_id: int):
-    response = supabase.table("complain").select("*").eq("id", post_id).single().execute()
+    response = supabase.table("posts").select("*").eq("id", post_id).single().execute()
     post = response.data
 
     return templates.TemplateResponse("posts.html", {"request": request, "post": post})
