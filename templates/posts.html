@@ -11,8 +11,8 @@
     <title>{{ post.title }}</title>
 </head>
 <body>
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
+    <h1 data-content="{{ post.title }}">{{ post.title }}</h1>
+    <p>{{ post.content|safe }}</p>
     <button onclick="location.href='/complain.html'">돌아가기</button>
 </body>
 </html>
