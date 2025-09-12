@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1 data-content="{{ post.title }}">{{ post.title }}</h1>
-    <p>{{ post.content|safe }}</p>
+    <p>{{ post.content | replace("\n", "<br>") | safe }}</p>
     <button onclick="location.href='/complain'">돌아가기</button>
 </body>
 </html>
