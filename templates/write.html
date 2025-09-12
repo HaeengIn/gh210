@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>민원 창구 글 작성</title>
+</head>
+<body>
+    <h1 class="fade-up" data-content="글 작성하기">글 작성하기</h1>
+    <form action="/write" method="post">
+        <label>제목: </label><br>
+        <input type="text" name="title" required><br><br>
+        <label>내용: </label><br>
+        <textarea name="content" rows="10" cols="50" required></textarea><br><br>
+        <button type="submit">등록</button>
+    </form>
+</body>
+</html>
