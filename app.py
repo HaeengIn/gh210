@@ -30,7 +30,7 @@ def notice(request: Request):
 
 @app.get("/complain")
 def complain(request: Request):
-    response = supabase.table("posts").select("*").execute()
+    response = supabase.table("posts").select("*").order("id", desc=True).execute()
     posts = response.data
     for p in posts:
         dt = datetime.fromisoformat(p['created_at'].replace("Z", "+00:00"))
@@ -58,19 +58,7 @@ async def write(request: Request):
 @app.post("/write")
 async def writePost(request: Request, title: str = Form(...), content: str = Form(...)):
     supabase.table("posts").insert({"title": title, "content": content, "status": 0}).execute()
-    response = supabase.table("posts").select("*").order("id", desc=True).execute()
-    posts = response.data
-    for p in posts:
-        dt = datetime.fromisoformat(p['created_at'].replace("Z", "+00:00"))
-        p['created_at'] = dt.strftime("%Y-%m-%d")
-        st = p['status']
-        if st == 0:
-            p['status'] = "대기"
-        elif st == 1:
-            p['status'] = "완료"
-        elif st == 2:
-            p['status'] = "공지"
-    return templates.TemplateResponse("complain.html", {"request": request, "posts": posts})
+    return RedirectResponse(url="/complain", status_code=303)
 
 @app.get("/{subject}")
 def cloud_subject(request: Request, subject: str):
