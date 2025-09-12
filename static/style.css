@@ -61,6 +61,10 @@ img {
         width: 100%;
         max-width: 400px;
     }
+    textarea {
+        width: 100%;
+        min-height: 100px;
+    }
 }
 
 @media (min-width: 768px) {
@@ -70,6 +74,10 @@ img {
     .grid {
         grid-template-columns: repeat(3, 1fr);
         max-width: 660px;
+    }
+    textarea {
+        width: 70%;
+        min-height: 150px;
     }
 }
 
