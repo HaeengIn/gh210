@@ -58,7 +58,7 @@ async def write(request: Request):
 
 @app.post("/write")
 async def writePost(request: Request, title: str = Form(...), content: str = Form(...)):
-    supabase.table("posts").insert({"title": title, "content": content, "status": 0}).execute()
+    response = supabase.table("posts").insert({"title": title, "content": content, "status": 0}).execute()
     newPost = response.data[0]
     newId = newPost["id"]
     return RedirectResponse(url="/complain", status_code=303)
