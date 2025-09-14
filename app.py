@@ -6,6 +6,7 @@ from supabase import create_client, Client
 import os
 from dotenv import load_dotenv
 from functions import *
+import asyncio
 
 load_dotenv()
 
@@ -18,20 +19,24 @@ supabaseKey = os.getenv("SUPABASE_KEY")
 supabase: Client = create_client(supabaseUrl, supabaseKey)
 
 @app.get("/")
-def index(request: Request):
-    ddayMessages = dday(supabase)
-    meal = getMeal()
-    timeTable = getTimeTable()
-    schedule = getSchedule()
+async def index(request: Request):
+    loop = asyncio.get_event_loop()
+    ddayMessages = await loop.run_in_executor(None, dday, supabase)
+    meal, timeTable, schedule = await asyncio.gather(
+        loop.run_in_executor(None, getMeal),
+        loop.run_in_executor(None, getTimeTable),
+        loop.run_in_executor(None, getSchedule)
+    )
     return templates.TemplateResponse("index.html", {"request": request, "ddayMessages": ddayMessages, "meal": meal, "timeTable": timeTable, "schedule": schedule})
 
 @app.get("/notice")
-def notice(request: Request):
+async def notice(request: Request):
     return templates.TemplateResponse("notice.html", {"request": request})
 
 @app.get("/complain")
-def complain(request: Request):
-    response = supabase.table("posts").select("*").order("id", desc=True).execute()
+async def complain(request: Request):
+    loop = asyncio.get_event_loop()
+    response = await loop.run_in_executor(None, supabase.table("posts").select("*").order("id", desc=True).execute)
     posts = response.data
     for p in posts:
         dt = datetime.fromisoformat(p['created_at'].replace("Z", "+00:00"))
@@ -47,8 +52,9 @@ def complain(request: Request):
     return templates.TemplateResponse("complain.html", {"request": request, "posts": posts})
 
 @app.get("/complain/{id}")
-def complainPost(request: Request, id: int):
-    response = supabase.table("posts").select("*").eq("id", id).single().execute()
+async def complainPost(request: Request, id: int):
+    loop = asyncio.get_event_loop()
+    response = await loop.run_in_executor(None, supabase.table("posts").select("*").eq("id", id).single().execute)
     post = response.data
     return templates.TemplateResponse("posts.html", {"request": request, "post": post})
 
@@ -58,13 +64,14 @@ async def write(request: Request):
 
 @app.post("/write")
 async def writePost(request: Request, title: str = Form(...), content: str = Form(...)):
-    response = supabase.table("posts").insert({"title": title, "content": content, "status": 0}).execute()
+    loop = asyncio.get_event_loop()
+    response = await loop.run_in_executor(None, supabase.table("posts").insert({"title": title, "content": content, "status": 0}).execute)
     newPost = response.data[0]
     newId = newPost["id"]
     return RedirectResponse(url="/complain", status_code=303)
 
 @app.get("/{subject}")
-def cloud_subject(request: Request, subject: str):
+async def cloud_subject(request: Request, subject: str):
     valid_subjects = ["bio", "chem", "earth", "eng", "essay", "ethic", "gram", "jp", "kor", "math", "music", "pe", "phys", "stat"]
     if subject not in valid_subjects:
         return templates.TemplateResponse("404.html", {"request": request}, status_code=404)
