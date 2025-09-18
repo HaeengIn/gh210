@@ -1,11 +1,10 @@
 from datetime import date, datetime, timezone, timedelta
 from supabase import Client
+from zoneinfo import ZoneInfo
 
 def dday(supabase: Client):
     # 당일 날짜 불러오기
-    KST = timezone(timedelta(hours=9))
-    nowKST = datetime.now(KST)
-    today = nowKST.date()
+    today = datetime.now(ZoneInfo("Asia/Seoul")).date()
 
     # 수행평가 데이터 불러오기
     performance = supabase.table("performance").select("subject", "date").execute()
