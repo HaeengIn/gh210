@@ -11,56 +11,55 @@
     <title>2-10 수행평가 안내지 클라우드</title>
 </head>
 <body>
-    <h1 class="fade-up" data-content="2025 교하고등학교 2학년 10반 수행평가 안내지 클라우드">
+    <h1 data-content="2025 교하고등학교 2학년 10반 수행평가 안내지 클라우드">
         2025 교하고등학교 2학년 10반 수행평가 안내지 클라우드
     </h1>
-    <a class="fade-up" href="notice">📢 공지사항</a>
-    <div class="fade-up dday">
+    <a href="notice">📢 공지사항</a>
+    <div class="dday">
         {% for message in ddayMessages %}
-            <p class="fade-up">{{ message|safe }}</p>
+            <p>{{ message|safe }}</p>
         {% endfor %}
     </div>
     <details>
-        <summary class="fade-up">학교 관련 일정 보기 [ 펼치기 · 접기 ]</summary>
-        <h4 class="fade-up" data-content="오늘의 급식">
+        <summary>학교 관련 일정 보기 [ 펼치기 · 접기 ]</summary>
+        <h4 data-content="오늘의 급식">
         오늘의 급식
         </h4>
-        <pre class="fade-up">{{ meal }}</pre>
-        <h4 class="fade-up" data-content="시간표">
+        <pre>{{ meal }}</pre>
+        <h4 data-content="시간표">
             시간표
         </h4>
-        <pre class="fade-up">{{ timeTable|safe }}</pre>
-        <h4 class="fade-up" data-content="오늘의 일정">
+        <pre>{{ timeTable|safe }}</pre>
+        <h4 data-content="오늘의 일정">
             오늘의 일정
         </h4>
-        <pre class="fade-up">{{ schedule|safe }}</pre>
+        <pre>{{ schedule|safe }}</pre>
     </details>
-    <button class="fade-up" onclick="location.href='/complain'">민원 창구</button>
-    <hr class="fade-up">
-    <h4 class="fade-up" data-content="이수 중인 과목">
+    <button onclick="location.href='/complain'">민원 창구</button>
+    <hr>
+    <h4 data-content="이수 중인 과목">
         이수 중인 과목
     </h4>
     <div class="grid">
-        <button class="fade-up" onclick="location.href='/math'">수학</button>
-        <button class="fade-up" onclick="location.href='/eng'">영어</button>
-        <button class="fade-up" onclick="location.href='/gram'">언어와 매체</button>
-        <button class="fade-up" onclick="location.href='/essay'">화법과 작문</button>
-        <button class="fade-up" onclick="location.href='/phys'">물리 I</button>
-        <button class="fade-up" onclick="location.href='/chem'">화학 I</button>
-        <button class="fade-up" onclick="location.href='/bio'">생명과학 I</button>
-        <button class="fade-up" onclick="location.href='/earth'">지구과학 I</button>
-        <button class="fade-up" onclick="location.href='/ethic'">생명과 윤리</button>
-        <button class="fade-up" onclick="location.href='/stat'">확률과 통계</button>
-        <button class="fade-up" onclick="location.href='/jp'">일본어</button>
-        <button class="fade-up" onclick="location.href='/music'">음악</button>
-        <button class="fade-up" onclick="location.href='/pe'">운동과 건강</button>
+        <button onclick="location.href='/math'">수학</button>
+        <button onclick="location.href='/eng'">영어</button>
+        <button onclick="location.href='/gram'">언어와 매체</button>
+        <button onclick="location.href='/essay'">화법과 작문</button>
+        <button onclick="location.href='/phys'">물리 I</button>
+        <button onclick="location.href='/chem'">화학 I</button>
+        <button onclick="location.href='/bio'">생명과학 I</button>
+        <button onclick="location.href='/earth'">지구과학 I</button>
+        <button onclick="location.href='/ethic'">생명과 윤리</button>
+        <button onclick="location.href='/stat'">확률과 통계</button>
+        <button onclick="location.href='/jp'">일본어</button>
+        <button onclick="location.href='/music'">음악</button>
+        <button onclick="location.href='/pe'">운동과 건강</button>
     </div>
-    <hr class="fade-up">
-    <h4 class="fade-up" data-content="이수가 종료된 과목">
+    <hr>
+    <h4 data-content="이수가 종료된 과목">
         이수가 종료된 과목
     </h4>
-    <button class="fade-up" onclick="location.href='/kor'">문학</button>
+    <button onclick="location.href='/kor'">문학</button>
     <p>Copyright 2025 &copy; HaeengIn. All rights reserved.</p>
-    <script src="/static/script.min.js" defer></script>
 </body>
 </html>
