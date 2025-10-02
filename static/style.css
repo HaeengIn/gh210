@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-family: GmarketSansMedium;
+    src: url("/static/GmarketSansMedium.woff") format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -15,7 +15,7 @@ html {
 
 body {
     min-height: 100vh;
-    font-family: 'GmarketSansMedium';
+    font-family: GmarketSansMedium, Arial, sans-serif;
     word-break: keep-all;
     text-align: center;
 }
@@ -130,4 +130,8 @@ a, label {
 
 .dday {
     font-size: 120%;
+}
+
+summary {
+    cursor: default;
 }
