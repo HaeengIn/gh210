@@ -14,9 +14,7 @@ app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-supabaseUrl = os.getenv("SUPABASE_URL")
-supabaseKey = os.getenv("SUPABASE_KEY")
-supabase: Client = create_client(supabaseUrl, supabaseKey)
+supabase: Client = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_KEY"))
 
 @app.get("/")
 async def index(request: Request):
