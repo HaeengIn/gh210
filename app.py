@@ -5,10 +5,9 @@ from fastapi.responses import RedirectResponse
 from fastapi.middleware.gzip import GZipMiddleware
 from starlette.responses import Response
 from supabase import create_client, Client
-import os
+import os, asyncio
 from dotenv import load_dotenv
 from functions import *
-import asyncio
 
 load_dotenv()
 
