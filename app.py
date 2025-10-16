@@ -35,16 +35,17 @@ supabase: Client = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_
 async def index(request: Request):
     loop = asyncio.get_event_loop()
     ddayMessages = await loop.run_in_executor(None, dday, supabase)
+    return templates.TemplateResponse("index.html", {"request": request, "ddayMessages": ddayMessages})
+
+@app.get("/school")
+async def school(request: Request):
+    loop = asyncio.get_event_loop()
     meal, timeTable, schedule = await asyncio.gather(
         loop.run_in_executor(None, getMeal),
         loop.run_in_executor(None, getTimeTable),
         loop.run_in_executor(None, getSchedule)
     )
-    return templates.TemplateResponse("index.html", {"request": request, "ddayMessages": ddayMessages, "meal": meal, "timeTable": timeTable, "schedule": schedule})
-
-@app.get("/notice")
-async def notice(request: Request):
-    return templates.TemplateResponse("notice.html", {"request": request})
+    return templates.TemplateResponse("school.html", {"request": request, "meal": meal, "timeTable": timeTable, "schedule": schedule})
 
 app.include_router(complain_router)
 
