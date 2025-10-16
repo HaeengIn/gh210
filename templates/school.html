@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.min.css">
+    <link rel="shortcut icon" href="../static/favicon.png" type="image/x-icon">
+    <title>학교 일정</title>
+</head>
+<body>
+    <h1 data-content="학교 일정">학교 일정</h1>
+    <h4 data-content="오늘의 급식">
+        오늘의 급식
+    </h4>
+    <pre>{{ meal }}</pre>
+    <h4 data-content="시간표">
+        시간표
+    </h4>
+    <pre>{{ timeTable|safe }}</pre>
+    <h4 data-content="오늘의 일정">
+        오늘의 일정
+    </h4>
+    <pre>{{ schedule|safe }}</pre>
+    <button onclick="location.href='/'">홈으로</button>
+</body>
+</html>
