@@ -107,6 +107,7 @@ button {
 
 li {
     margin: 10px;
+    list-style-position: inside;
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
