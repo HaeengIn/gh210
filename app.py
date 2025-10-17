@@ -1,9 +1,7 @@
-from fastapi import FastAPI, Request, Form
+from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import RedirectResponse
 from fastapi.middleware.gzip import GZipMiddleware
-from fastapi.routing import APIRouter
 from routers.complain import complain_router
 from starlette.responses import Response
 from supabase import create_client, Client
