@@ -31,9 +31,7 @@ supabase: Client = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_
 
 @app.get("/")
 async def index(request: Request):
-    loop = asyncio.get_event_loop()
-    ddayMessages = await loop.run_in_executor(None, dday, supabase)
-    return templates.TemplateResponse("index.html", {"request": request, "ddayMessages": ddayMessages})
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get("/school")
 async def school(request: Request):
