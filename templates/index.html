@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="{{ theme or ''}}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,9 @@
     <h1 data-content="2025 교하고등학교 2학년 10반 수행평가 안내지 클라우드">
         2025 교하고등학교 2학년 10반 수행평가 안내지 클라우드
     </h1>
+    <div>
+        <button id="theme-toggle">테마 변경</button>
+    </div>
     <button onclick="location.href='/school'">학교 일정</button>
     <button onclick="location.href='/complain'">민원 창구</button>
     <hr>
@@ -41,5 +44,6 @@
     </h4>
     <button onclick="location.href='/kor'">문학</button>
     <p>Copyright 2025 &copy; HaeengIn. All rights reserved.</p>
+    <script defer src="../static/scripts.min.js"></script>
 </body>
 </html>
