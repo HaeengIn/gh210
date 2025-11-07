@@ -6,14 +6,34 @@
     font-display: swap;
 }
 
-html {
+[data-theme="dark"] html {
+    background: #2d2d2d !important;
+    background-color: #2d2d2d !important;
+    background-image: none !important;
+}
+
+[data-theme="dark"] body {
+    background-image: none;
+    background: #2d2d2d;
+    background-color: #2d2d2d;
+    color: #fff;
+}
+
+[data-theme="dark"] hr {
+    background-color: #fff;
+}
+
+[data-theme="dark"] button {
+    border-color: #fff;
+    background-color: #2d2d2d;
+    color: #fff;
+}
+
+body {
     background-image: url(bg.webp);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-}
-
-body {
     min-height: 100vh;
     font-family: GmarketSansMedium, Arial, sans-serif;
     word-break: keep-all;

@@ -3,7 +3,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.gzip import GZipMiddleware
 from routers.complain import complain_router
-from starlette.responses import Response
+from starlette.responses import JSONResponse, Response
 from supabase import create_client, Client
 import os, asyncio, importlib.util
 from dotenv import load_dotenv
@@ -31,7 +31,16 @@ supabase: Client = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_
 
 @app.get("/")
 async def index(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    theme = request.cookies.get("theme", "")
+    return templates.TemplateResponse("index.html", {"request": request, "theme": theme})
+
+@app.route("/set_theme", methods=["POST"])
+async def set_theme(request: Request):
+    data = await request.json()
+    theme = data.get("theme", "light")
+    response = JSONResponse(content={"status": "ok", "theme": theme})
+    response.set_cookie(key="theme", value=theme, max_age=60*60*24*30, httponly=False, samesite="Lax")
+    return response
 
 @app.get("/school")
 async def school(request: Request):
