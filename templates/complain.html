@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="ko" data-theme="{{ theme or ''}}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base_other.html" %}
+{% block og %}
     <meta property="og:title" content="2학년 10반 민원 창구">
-    <meta property="og:image" content="../static/bg.webp">
     <meta property="og:url" content="https://gh210.kro.kr/complain">
-    <link rel="stylesheet" href="../static/style.min.css">
-    <link rel="icon" href="../static/favicon.png">
-    <title>2학년 10반 민원 창구</title>
-</head>
-<body>
+{% endblock %}
+{% block title %}2학년 10반 민원 창구{% endblock %}
+{% block content %}
     <h1 data-content="2학년 10반 민원 창구">
         2학년 10반 민원 창구
     </h1>
@@ -25,5 +19,4 @@
     </ul>
     <button onclick="location.href='/write'">글 작성</button>
     <button onclick="location.href='/'">홈으로</button>
-</body>
-</html>
+{% endblock %}

@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="ko" data-theme="{{ theme or ''}}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="2학년 10반 수행평가 안내지 클라우드">
-    <meta property="og:image" content="{{ url_for('static', path='/bg.webp') }}">
-    <link rel="stylesheet" href="{{ url_for('static', path='/style.min.css') }}">
-    <link rel="icon" href="{{ url_for('static', path='/favicon.png') }}">
-    <title>2-10 수행평가 안내지 클라우드</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
     <h1 data-content="존재하지 않는 페이지입니다">
         존재하지 않는 페이지입니다
     </h1>
@@ -18,5 +8,4 @@
     </h4>
     <button onclick="location.href='/'">홈으로</button>
     <p>Copyright 2025 &copy; HaeengIn. All rights reserved.</p>
-</body>
-</html>
+{% endblock %}

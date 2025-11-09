@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="ko" data-theme="{{ theme or ''}}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/style.min.css">
-    <link rel="icon" href="../static/favicon.png">
-    <title>민원 창구 글 작성</title>
-</head>
-<body>
+{% extends "base_other.html" %}
+{% block og %}
+    <meta property="og:title" content="민원 창구 글 작성">
+    <meta property="og:url" content="https://gh210.kro.kr/write">
+{% endblock %}
+{% block title %}민원 창구 글 작성{% endblock %}
+{% block content %}
     <h1 data-content="글 작성하기">글 작성하기</h1>
     <form action="/write" method="post">
         <label>제목: </label><br>
@@ -17,5 +14,4 @@
         <button type="submit">등록</button>
     </form>
     <button onclick="location.href='/complain'">뒤로가기</button>
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="{{ theme or '' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block og %}{% endblock %}
+    <meta property="og:image" content="../static/bg.webp">
+    <link rel="stylesheet" href="../static/style.min.css">
+    <link rel="icon" href="../static/favicon.png">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+    <p>Copyright 2025 &copy; HaeengIn. All rights reserved.</p>
+    <script src="../static/scripts.min.js"></script>
+</body>
+</html>
