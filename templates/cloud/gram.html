@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="ko" data-theme="{{ theme or ''}}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="언어와 매체">
-    <meta property="og:description" content="2학년 10반 수행평가 안내지 클라우드">
-    <meta property="og:image" content="../static/bg.webp">
-    <meta property="og:url" content="https://gh210.kro.kr/gram">
-    <link rel="stylesheet" href="../static/style.min.css">
-    <link rel="icon" href="../static/favicon.png">
-    <title>2-10 수행평가 안내지 클라우드</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
     <h1 data-content="언어와 매체">
         언어와 매체
     </h1>
@@ -32,6 +20,7 @@
         <li>문법지식 탐구하기</li>
         <img src="../static/img/gram_jisikexp.webp" alt="문법 지식 탐구하기">
     </details>
-    <button onclick="location.href='/'">홈으로</button>
-</body>
-</html>
+    
+    <button on
+    click="location.href='/'">홈으로</button>
+{% endblock %}

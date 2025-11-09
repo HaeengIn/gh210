@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="ko" data-theme="{{ theme or ''}}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="영어">
-    <meta property="og:description" content="2학년 10반 수행평가 안내지 클라우드">
-    <meta property="og:image" content="../static/bg.webp">
-    <meta property="og:url" content="https://gh210.kro.kr/stat">
-    <link rel="stylesheet" href="../static/style.min.css">
-    <link rel="icon" href="../static/favicon.png">
-    <title>2-10 수행평가 안내지 클라우드</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
     <h1 class="fade-up" data-content="확률과 통계">
         확률과 통계
     </h1>
@@ -40,5 +28,4 @@
         <img loading="lazy" src="../static/img/stat_createproblem.webp" alt="문제 만들기">
     </details>
     <button onclick="location.href='/'">홈으로</button>
-</body>
-</html>
+{% endblock %}
