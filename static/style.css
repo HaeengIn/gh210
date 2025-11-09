@@ -29,6 +29,10 @@
     color: #fff;
 }
 
+[data-theme="dark"] a {
+    color: aqua;
+}
+
 body {
     background-image: url(bg.webp);
     background-size: cover;
