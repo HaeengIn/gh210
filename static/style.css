@@ -150,10 +150,6 @@ a, label {
     display: inline-block;
 }
 
-.dday {
-    font-size: 120%;
-}
-
 summary {
     cursor: default;
     user-select: none;
