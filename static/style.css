@@ -132,10 +132,7 @@ button {
 li {
     margin: 10px;
     list-style-position: inside;
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
+    user-select: none;
 }
 
 hr {
@@ -159,4 +156,5 @@ a, label {
 
 summary {
     cursor: default;
+    user-select: none;
 }
