@@ -2,10 +2,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const html = document.documentElement;
     const toggleBtn = document.getElementById("theme-toggle");
 
+    const serverTheme = html.dataset.theme;
     const savedTheme = localStorage.getItem("theme");
+
     if (savedTheme) {
         html.dataset.theme = savedTheme;
-    } else if (!html.dataset.theme) {
+    } else if (serverTheme) {
+        html.dataset.theme = serverTheme;
+        localStorage.setItem("theme", serverTheme);
+    } else {
         if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
             html.dataset.theme = "dark";
         } else {
