@@ -6,30 +6,30 @@
     font-display: swap;
 }
 
-[data-theme="dark"] html {
+html[data-theme="dark"] html {
     background: #2d2d2d !important;
     background-color: #2d2d2d !important;
     background-image: none !important;
 }
 
-[data-theme="dark"] body {
+html[data-theme="dark"] body {
     background-image: none;
     background: #2d2d2d;
     background-color: #2d2d2d;
     color: #fff;
 }
 
-[data-theme="dark"] hr {
+html[data-theme="dark"] hr {
     background-color: #fff;
 }
 
-[data-theme="dark"] button {
+html[data-theme="dark"] button {
     border-color: #fff;
     background-color: #2d2d2d;
     color: #fff;
 }
 
-[data-theme="dark"] a {
+html[data-theme="dark"] a {
     color: aqua;
 }
 

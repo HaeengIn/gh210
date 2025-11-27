@@ -56,7 +56,8 @@ app.include_router(complain_router)
 
 @app.get("/{subject}")
 async def cloud_subject(request: Request, subject: str):
+    theme = request.cookies.get("theme", "light")
     valid_subjects = ["bio", "chem", "earth", "eng", "essay", "ethic", "gram", "jp", "kor", "math", "music", "pe", "phys", "stat"]
     if subject not in valid_subjects:
         return templates.TemplateResponse("404.html", {"request": request}, status_code=404)
-    return templates.TemplateResponse(f"cloud/{subject}.html", {"request": request, "subject": subject})
+    return templates.TemplateResponse(f"cloud/{subject}.html", {"request": request, "subject": subject, "theme": theme})
