@@ -1,22 +1,29 @@
 from datetime import datetime
+from zoneinfo import ZoneInfo
 from dotenv import load_dotenv
 import requests, os
 
-def getMeal():
+KST = ZoneInfo("Asia/Seoul")
+load_dotenv()
+KEY = os.getenv("neisApi")
 
-    load_dotenv()
-
-    mealToday = datetime.now().strftime("%Y%m%d")
-    baseUrl = "https://open.neis.go.kr/hub/mealServiceDietInfo"
-    params = {
-        "KEY": os.getenv("neisApi"),
+def base_params():
+    return {
+        "KEY": KEY,
         "Type": "json",
         "pIndex": 1,
         "pSize": 100,
         "ATPT_OFCDC_SC_CODE": "J10",
         "SD_SCHUL_CODE": "7530774",
-        "MLSV_YMD": mealToday,
     }
+
+def getMeal():
+    mealToday = datetime.now(KST).strftime("%Y%m%d")
+    baseUrl = "https://open.neis.go.kr/hub/mealServiceDietInfo"
+    params = base_params()
+    params.update({
+        "MLSV_YMD": mealToday,
+    })
 
     response = requests.get(baseUrl, params=params)
     data = response.json()
@@ -28,25 +35,17 @@ def getMeal():
         return "오늘의 급식 정보가 없습니다."
 
 def getTimeTable():
-
-    load_dotenv()
-
-    dayOfWeek = datetime.now().weekday()
+    dayOfWeek = datetime.now(KST).weekday()
     if dayOfWeek >= 5:
         return "오늘은 수업이 없습니다."
 
     baseUrl = "https://open.neis.go.kr/hub/hisTimetable"
-    params = {
-        "KEY": os.getenv("neisApi"),
-        "Type": "json",
-        "pIndex": 1,
-        "pSize": 100,
-        "ATPT_OFCDC_SC_CODE": "J10",
-        "SD_SCHUL_CODE": "7530774",
+    params = base_params()
+    params.update({
         "ALL_TI_YMD": datetime.now().strftime("%Y%m%d"),
         "GRADE": 2,
         "CLASS_NM": "10",
-    }
+    })
 
     response = requests.get(baseUrl, params=params)
     data = response.json()
@@ -63,19 +62,11 @@ def getTimeTable():
         return "오늘의 시간표 정보가 없습니다."
     
 def getSchedule():
-
-    load_dotenv()
-
     baseUrl = "https://open.neis.go.kr/hub/SchoolSchedule"
-    params = {
-        "KEY": os.getenv("neisApi"),
-        "Type": "json",
-        "pIndex": 1,
-        "pSize": 100,
-        "ATPT_OFCDC_SC_CODE": "J10",
-        "SD_SCHUL_CODE": "7530774",
-        "AA_YMD": datetime.now().strftime("%Y%m%d"),
-    }
+    params = base_params()
+    params.update({
+        "AA_YMD": datetime.now(KST).strftime("%Y%m%d"),
+    })
 
     response = requests.get(baseUrl, params=params)
     data = response.json()
