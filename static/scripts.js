@@ -36,3 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+document.getElementById("error-complain").addEventListener("click", function (e) {
+    e.preventDefault();
+    alert("현재 민원창구와 연결된 데이터베이스가 멈춰있는 상태일 수 있습니다.\n관리자에게 문의해주세요.");
+  });
