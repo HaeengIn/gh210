@@ -6,7 +6,13 @@
     <div>
         <button id="theme-toggle">테마 변경</button>
     </div>
-    <button onclick="location.href='/school'">학교 일정</button>
+    <details>
+        <summary>학교 일정 바로가기 [ 펼치기 · 접기 ]</summary>
+        <button onclick="location.href='/meal'">급식</button>
+        <button onclick="location.href='/timetable'">시간표</button>
+        <button onclick="location.href='/schedule'">일정</button>
+        <label><a href="/" id="error-loading-school">페이지 로딩이 너무 오래걸리나요?</a></label>
+    </details>
     <button onclick="location.href='/complain'">민원 창구</button>
     <label><a href="/" id="error-complain">민원창구에 접속이 되지 않나요?</a></label>
     <hr>
