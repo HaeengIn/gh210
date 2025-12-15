@@ -11,16 +11,16 @@ school_router = APIRouter()
 async def meal(request: Request):
     loop = asyncio.get_event_loop()
     meal = await asyncio.gather(loop.run_in_executor(None, get_meal))
-    return templates.TemplateResponse("meal.html", {"request": request, "meal": meal})
+    return templates.TemplateResponse("school/meal.html", {"request": request, "meal": meal})
 
 @school_router.get("/timetable")
 async def meal(request: Request):
     loop = asyncio.get_event_loop()
     timetable = await asyncio.gather(loop.run_in_executor(None, get_timetable))
-    return templates.TemplateResponse("timetable.html", {"request": request, "timetable": timetable})
+    return templates.TemplateResponse("school/timetable.html", {"request": request, "timetable": timetable})
 
 @school_router.get("/schedule")
 async def meal(request: Request):
     loop = asyncio.get_event_loop()
     schedule = await asyncio.gather(loop.run_in_executor(None, get_schedule))
-    return templates.TemplateResponse("schedule.html", {"request": request, "schedule": schedule})
+    return templates.TemplateResponse("school/schedule.html", {"request": request, "schedule": schedule})

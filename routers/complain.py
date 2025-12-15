@@ -29,18 +29,18 @@ async def complain(request: Request):
             s['status'] = "완료"
         elif st == 2:
             s['status'] = "공지"
-    return templates.TemplateResponse("complain.html", {"request": request, "posts": posts})
+    return templates.TemplateResponse("complain/complain.html", {"request": request, "posts": posts})
 
 @complain_router.get("/complain/{id}")
 async def complainPost(request: Request, id: int):
     loop = asyncio.get_event_loop()
     response = await loop.run_in_executor(None, supabase.table("posts").select("*").eq("id", id).single().execute)
     post = response.data
-    return templates.TemplateResponse("posts.html", {"request": request, "post": post})
+    return templates.TemplateResponse("complain/posts.html", {"request": request, "post": post})
 
 @complain_router.get("/write")
 async def write(request: Request):
-    return templates.TemplateResponse("write.html", {"request": request})
+    return templates.TemplateResponse("complain/write.html", {"request": request})
 
 @complain_router.post("/write")
 async def writePost(request: Request, title: str = Form(...), content: str = Form(...)):
