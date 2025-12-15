@@ -1,0 +1,13 @@
+{% extends "base_other.html" %}
+{% block og %}
+    <meta property="og:title" content="오늘의 시간표">
+    <meta property="og:url" content="https://gh210.kro.kr/timetable">
+{% endblock %}
+{% block title %}오늘의 시간표{% endblock %}
+{% block content %}
+    <h4 data-content="시간표">
+        시간표
+    </h4>
+    <pre>{{ timeTable|safe }}</pre>
+    <button onclick="location.href='/'">홈으로</button>
+{% endblock %}

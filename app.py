@@ -2,15 +2,15 @@ from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.gzip import GZipMiddleware
-from routers.complain import complain_router
 from starlette.responses import JSONResponse, Response
+from routers.complain import complain_router
+from routers.school import school_router
 from supabase import create_client, Client
-import os, asyncio, importlib.util
 from dotenv import load_dotenv
 from functions import *
+import os, asyncio, importlib.util
 
 load_dotenv()
-
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
@@ -26,7 +26,6 @@ class CachedStaticFiles(StaticFiles):
 
 app.mount("/static", CachedStaticFiles(directory="static"), name="static")
 app.add_middleware(GZipMiddleware, minimum_size=500)
-
 supabase: Client = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_KEY"))
 
 @app.get("/")
@@ -42,16 +41,7 @@ async def set_theme(request: Request):
     response.set_cookie(key="theme", value=theme, max_age=60*60*24*30, httponly=False, samesite="Lax")
     return response
 
-@app.get("/school")
-async def school(request: Request):
-    loop = asyncio.get_event_loop()
-    meal, timeTable, schedule = await asyncio.gather(
-        loop.run_in_executor(None, getMeal),
-        loop.run_in_executor(None, getTimeTable),
-        loop.run_in_executor(None, getSchedule)
-    )
-    return templates.TemplateResponse("school.html", {"request": request, "meal": meal, "timeTable": timeTable, "schedule": schedule})
-
+app.include_router(school_router)
 app.include_router(complain_router)
 
 @app.get("/{subject}")

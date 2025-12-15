@@ -1,0 +1,13 @@
+{% extends "base_other.html" %}
+{% block og %}
+    <meta property="og:title" content="오늘의 일정">
+    <meta property="og:url" content="https://gh210.kro.kr/schedule">
+{% endblock %}
+{% block title %}오늘의 일정{% endblock %}
+{% block content %}
+    <h4 data-content="오늘의 일정">
+        오늘의 일정
+    </h4>
+    <pre>{{ schedule|safe }}</pre>
+    <button onclick="location.href='/'">홈으로</button>
+{% endblock %}

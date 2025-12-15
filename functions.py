@@ -3,8 +3,8 @@ from zoneinfo import ZoneInfo
 from dotenv import load_dotenv
 import requests, os
 
-KST = ZoneInfo("Asia/Seoul")
 load_dotenv()
+KST = ZoneInfo("Asia/Seoul")
 KEY = os.getenv("neisApi")
 
 def base_params():
@@ -17,7 +17,7 @@ def base_params():
         "SD_SCHUL_CODE": "7530774",
     }
 
-def getMeal():
+def get_meal():
     mealToday = datetime.now(KST).strftime("%Y%m%d")
     baseUrl = "https://open.neis.go.kr/hub/mealServiceDietInfo"
     params = base_params()
@@ -34,7 +34,7 @@ def getMeal():
     except Exception:
         return "오늘의 급식 정보가 없습니다."
 
-def getTimeTable():
+def get_timetable():
     dayOfWeek = datetime.now(KST).weekday()
     if dayOfWeek >= 5:
         return "오늘은 수업이 없습니다."
@@ -42,7 +42,7 @@ def getTimeTable():
     baseUrl = "https://open.neis.go.kr/hub/hisTimetable"
     params = base_params()
     params.update({
-        "ALL_TI_YMD": datetime.now().strftime("%Y%m%d"),
+        "ALL_TI_YMD": datetime.now(KST).strftime("%Y%m%d"),
         "GRADE": 2,
         "CLASS_NM": "10",
     })
@@ -61,7 +61,7 @@ def getTimeTable():
     except Exception:
         return "오늘의 시간표 정보가 없습니다."
     
-def getSchedule():
+def get_schedule():
     baseUrl = "https://open.neis.go.kr/hub/SchoolSchedule"
     params = base_params()
     params.update({
