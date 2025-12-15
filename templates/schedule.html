@@ -5,9 +5,8 @@
 {% endblock %}
 {% block title %}오늘의 일정{% endblock %}
 {% block content %}
-    <h4 data-content="오늘의 일정">
-        오늘의 일정
-    </h4>
+    <h1 data-content="학교 일정">학교 일정</h1>
+    <h4 data-content="일정">일정</h4>
     <pre>{{ schedule|safe }}</pre>
     <button onclick="location.href='/'">홈으로</button>
 {% endblock %}
